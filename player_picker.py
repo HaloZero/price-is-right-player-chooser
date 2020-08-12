@@ -5,6 +5,7 @@ criteria '''
 import pandas as pd
 import random
 import numpy as np
+from datetime import date
 import pdb
 
 # import argparse
@@ -43,6 +44,12 @@ while (True):
 			player_called = random.choice(filtered_names)
 			print("Come on down " + player_called)
 			names_to_remove.append(player_called)
+
+		date_string = date.today().strftime('%m-%d')
+		f = open("picked-names " + date_string + ".txt", "a")
+		f.write(",".join(names_to_remove))
+		f.close()
+
 	elif command == "exit":
 		exit()
 	else:
